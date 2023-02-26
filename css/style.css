@@ -1,0 +1,165 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(#00A884 0%, #00A884 127px, #eae6df 127px, #d1d7db 100%);
+}
+
+.container {
+    display: grid;
+    width: 1600px;
+    height: 897px;
+    background-color: #ffffff;
+    grid-template-areas:
+        "container-esquerdo container-direito";
+    grid-template-columns: 1fr 2fr;
+}
+
+.container-esquerdo {
+    background-color: #ffffff;
+}
+
+.container-direito {
+    background-color: #efeae2;
+}
+
+.container-direito::before {
+    /* background-image: url(../img/fundo-mensagens.png); */
+    position: absolute;
+    content: "";
+    opacity: 0.06;
+    width: 1120px;
+    height: 897px;
+}
+
+.header-esquerdo {
+    display: flex;
+    width: 100%;
+    height: 59px;
+    background-color: #F0F2F5;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-perfil {
+    display: flex;
+    width: 190px;
+    justify-content: space-around;
+    margin-right: 16px;
+}
+
+.img-perfil {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.nav-perfil i {
+    display: flex;
+    font-size: 20px;
+    color: #54656f;
+    cursor: pointer;
+}
+
+.barra-pesquisa {
+    display: flex;
+    width: 100%;
+    height: 49px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.caixa-pesquisa {
+    width: 380px;
+    border: 0;
+    background-color: #F0F2F5;
+    height: 35px;
+    border-radius: 8px;
+    font-size: .9rem;
+    padding-left: 64px;
+    outline: 0;
+}
+
+.pesquisa i {
+    position: absolute;
+    color: #54656f;
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+.header-direito {
+    display: flex;
+    width: 100%;
+    height: 59px;
+    background-color: #F0F2F5;
+    justify-content: space-between;
+}
+
+.nav-mensagens {
+    display: flex;
+    width: 100%;
+    padding-right: 4vh;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 39px;
+    border-left: 0.5px solid #d3d2d2;
+
+}
+
+.nav-mensagens i {
+    display: flex;
+    font-size: 20px;
+    color: #54656f;
+    cursor: pointer;
+}
+
+.filtro {
+    color: #54656f;
+}
+
+.container__chats {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    gap: 16px;
+
+}
+
+.image__contato {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.chats {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.name__contato {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis
+}
+
+
+
+.container__teste {
+    display: flex;
+    border-bottom: 1px solid #f0f2f5;
+    gap: 20px;
+}
+.conversa{
+    padding-bottom: 16px;
+}
