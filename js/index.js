@@ -6,7 +6,7 @@ const criarCard = (contato) => {
     const mensagem = document.createElement('ul')
     mensagem.classList.add('container-mensagens')
 
-    const conversa = document.createElement('div')
+    const conversa = document.createElement('button')
     conversa.classList.add('container-conversas')
 
     // const foto = document.createElement('img')
@@ -16,8 +16,6 @@ const criarCard = (contato) => {
     const foto = document.createElement('img')
     foto.classList.add('img-chat')
     foto.src = `./imagens/contact1.png`
-
-
 
     const informacao = document.createElement('div')
     informacao.classList.add('container-info')
@@ -55,7 +53,15 @@ const carregarContatos = () => {
     container.replaceChildren(...contatosMensagens)
 }
 
+const carregarConversas = () =>{
+    const container2 = document.getElementById('container-conversas')
+    const contatosConversas = messages.map(criarCard)
+    container2.replaceChildren(...contatosConversas)
+}
+
 carregarContatos()
+carregarConversas()
+
 
   // // const imagem = document.createElement('img')
   // imagem.classList.add('img-chat')
