@@ -229,12 +229,7 @@ body{
     background: linear-gradient(135deg, #dfb877 0%, #dfb877 50%, transparent 50%, transparent 50%, )
   } */
   
-  .message p span {
-    display: block;
-    margin-top: 5px;
-    font-size: 0.85em;
-    opacity: 0.5;
-  }
+
   
   .my_message {
     justify-content: flex-end;

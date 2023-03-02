@@ -30,6 +30,9 @@ const criarCard = (contato) => {
     descricao.classList.add('info-conversa')
     descricao.textContent = contato.description
 
+    const mensagemMe = document.createElement('span')
+    mensagemMe.classList.add
+
     const hora = document.createElement('div')
     hora.classList.add('hora')
     hora.textContent = contato.hora
@@ -53,14 +56,20 @@ const carregarContatos = () => {
     container.replaceChildren(...contatosMensagens)
 }
 
-const carregarConversas = () =>{
+const carregarConversas = () => {
     const container2 = document.getElementById('container-conversas')
-    const contatosConversas = messages.map(criarCard)
+    // const contatosConversas = contatos.indexOf(messages).map(criarCard)
+
     container2.replaceChildren(...contatosConversas)
 }
-
+//console.log(carregarConversas);
 carregarContatos()
 carregarConversas()
+
+
+
+
+
 
 
   // // const imagem = document.createElement('img')
