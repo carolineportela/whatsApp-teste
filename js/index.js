@@ -2,16 +2,25 @@
 
 import { contatos } from "./contatos.js"
 
-const criarCard = (contato) => {
-    const mensagem = document.createElement('ul')
-    mensagem.classList.add('container-mensagens')
+let cont = 0
+const adicionarId = (contato) => {
+    contato.id = cont++
+    return contato
+}
 
-    const conversa = document.createElement('button')
+const contatos2 = contatos.map(adicionarId)
+
+console.log(contatos2)
+const criarCard = (contato, indice) => {
+    // const mensagem = document.createElement('ul')
+    // mensagem.classList.add('container-mensagens')
+
+    // const mensagem = document.getElementById('container-mensagens')
+
+    const conversa = document.createElement('div')
     conversa.classList.add('container-conversas')
-
-    // const foto = document.createElement('img')
-    // foto.classList.add('img-chat')
-    // foto.src = `./imagens/${contato.image}`
+    conversa.setAttribute('id', 'id-' + indice)
+    conversa.onClick = 'teste()'
 
     const foto = document.createElement('img')
     foto.classList.add('img-chat')
@@ -23,6 +32,9 @@ const criarCard = (contato) => {
     const perfil = document.createElement('div')
     perfil.classList.add('container-perfil')
 
+
+
+
     const nome = document.createElement('span')
     nome.textContent = contato.name
 
@@ -30,14 +42,11 @@ const criarCard = (contato) => {
     descricao.classList.add('info-conversa')
     descricao.textContent = contato.description
 
-    const mensagemMe = document.createElement('span')
-    mensagemMe.classList.add
-
     const hora = document.createElement('div')
     hora.classList.add('hora')
     hora.textContent = contato.hora
 
-    mensagem.append(conversa)
+    // mensagem.append(conversa)
 
     conversa.append(foto, informacao, nome, hora)
 
@@ -45,33 +54,41 @@ const criarCard = (contato) => {
 
     perfil.append(nome, descricao)
 
-    return mensagem
+    return conversa
 
 }
 
 const carregarContatos = () => {
-    const container = document.getElementById('container')
+    const container = document.getElementById('container-mensagens')
     const contatosMensagens = contatos.map(criarCard)
 
     container.replaceChildren(...contatosMensagens)
 }
 
-const carregarConversas = () => {
-    const container2 = document.getElementById('container-conversas')
-    // const contatosConversas = contatos.indexOf(messages).map(criarCard)
+// const acaoDoButao = document.getElementById('')
 
-    container2.replaceChildren(...contatosConversas)
+function teste(event) {
+    console.log(event.target.id)
 }
-//console.log(carregarConversas);
+
+
+// const loop = function () {
+//     let contador = 0;
+//     while(contador < contatos[contador].legth){
+//         console.log('teste' + contador)
+
+//         contador++
+//         return contador
+//     }
+
+// }
+
 carregarContatos()
-carregarConversas()
+
+// const container = document.getElementById('container')
 
 
 
+// console.log (containerConversas)
 
-
-
-
-  // // const imagem = document.createElement('img')
-  // imagem.classList.add('img-chat')
-  // imagem.src = `./imagens/contact1.png`
+// container.addEventListener('click', teste)
