@@ -1,26 +1,19 @@
 'use strict'
 
-import { contatos } from "./contatos.js"
+import {contatos} from "./contatos.js"
 
-let cont = 0
-const adicionarId = (contato) => {
-    contato.id = cont++
-    return contato
-}
-
-const contatos2 = contatos.map(adicionarId)
-
-console.log(contatos2)
 const criarCard = (contato, indice) => {
-    // const mensagem = document.createElement('ul')
-    // mensagem.classList.add('container-mensagens')
-
-    // const mensagem = document.getElementById('container-mensagens')
 
     const conversa = document.createElement('div')
     conversa.classList.add('container-conversas')
-    conversa.setAttribute('id', 'id-' + indice)
-    conversa.onClick = 'teste()'
+
+    conversa.addEventListener('click', (event) => {
+       // carregarMensagens(conversas)
+
+      
+        console.log(contatos[indice])
+
+    })
 
     const foto = document.createElement('img')
     foto.classList.add('img-chat')
@@ -29,12 +22,6 @@ const criarCard = (contato, indice) => {
     const informacao = document.createElement('div')
     informacao.classList.add('container-info')
 
-    const perfil = document.createElement('div')
-    perfil.classList.add('container-perfil')
-
-
-
-
     const nome = document.createElement('span')
     nome.textContent = contato.name
 
@@ -42,53 +29,73 @@ const criarCard = (contato, indice) => {
     descricao.classList.add('info-conversa')
     descricao.textContent = contato.description
 
-    const hora = document.createElement('div')
-    hora.classList.add('hora')
-    hora.textContent = contato.hora
+    conversa.append(foto, informacao, nome)
 
-    // mensagem.append(conversa)
-
-    conversa.append(foto, informacao, nome, hora)
-
-    informacao.append(perfil)
-
-    perfil.append(nome, descricao)
+    informacao.append(nome, descricao)
 
     return conversa
 
 }
 
-const carregarContatos = () => {
-    const container = document.getElementById('container-mensagens')
-    const contatosMensagens = contatos.map(criarCard)
+const criarConversa = (message) => {
 
+    const mensagem = document.createElement('div')
+    mensagem.classList.add('container-mensagens-direita')
+
+    const caixaMinha = document.createElement('div')
+    caixaMinha.classList.add('caixa-mensagens-minha')
+
+    const caixaSua = document.createElement('div')
+    caixaSua.classList.add('caixa-mensagens-sua')
+
+    const msgMinha = document.createElement('p')
+    msgMinha.classList.add('msg-minha')
+    msgMinha.textContent = message.messages
+
+    const horaMinha = document.createElement('span')
+    horaMinha.classList.add('hora-minha')
+    horaMinha.textContent = message.messages
+
+    const msgSua = document.createElement('p')
+    msgSua.classList.add('msg-sua')
+    msgSua.textContent = message.messages.content
+
+    const horaSua = document.createElement('span')
+    horaSua.classList.add('hora-sua')
+    horaSua.textContent = message.messages.time
+
+    mensagem.append(msgMinha, horaMinha, msgSua, horaSua)
+
+    return mensagem
+    
+
+}
+
+const carregarContatos = () => {
+    const container = document.getElementById('container')
+    const contatosMensagens = contatos.map(criarCard)
     container.replaceChildren(...contatosMensagens)
 }
 
-// const acaoDoButao = document.getElementById('')
-
-function teste(event) {
-    console.log(event.target.id)
-}
-
-
-// const loop = function () {
-//     let contador = 0;
-//     while(contador < contatos[contador].legth){
-//         console.log('teste' + contador)
-
-//         contador++
-//         return contador
-//     }
-
-// }
-
 carregarContatos()
 
-// const container = document.getElementById('container')
 
+const carregarMensagens = () => {
+    const mensagem = document.getElementById('mensagem')
+    const conversas = contatos.map(criarConversa)
+    mensagem.replaceChildren(...conversas)
+   
+}
+var div = document.getElementById('container-mensagens');
 
+div.addEventListener('click', function() {
 
-// console.log (containerConversas)
+    var container = document.getElementById('containerD');
 
-// container.addEventListener('click', teste)
+    container.classList.toggle('hide');
+
+});
+//console.log(carregarMensagens);
+
+carregarMensagens()
+
