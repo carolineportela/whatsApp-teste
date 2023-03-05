@@ -1,30 +1,23 @@
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: linear-gradient(#00A884 0%, #00A884 127px, #eae6df 127px, #d1d7db 100%);
 }
-.containerE{
+.containerE {
   display: grid;
   width: 83vw;
   height: 97vh;
   background-color: #ffffff;
-  grid-template-areas: 
-  "container-esquerdo container-direito";
+  grid-template-areas:
+    "container-esquerdo container-direito";
   grid-template-columns: 480px 1fr;
 }
+
 .container-esquerdo{
   grid-area: container-esquerdo;
   background-color: #ffffff;
-}
-.container-direito{
-  grid-area: container-direito;
-  background-color: #efeae2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 }
 .header-esquerdo{
   display: flex;
@@ -34,12 +27,6 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-.nav-perfil{
-  display: flex;
-  width: 190px;
-  justify-content: space-around;
-  margin-right: 16px;
-}
 .img-perfil{
   display: flex;
   width: 40px;
@@ -48,6 +35,12 @@ body{
   border-radius: 50%;
   margin-left: 16px;
   cursor: pointer;
+}
+.nav-perfil{
+  display: flex;
+  width: 190px;
+  justify-content: space-around;
+  margin-right: 16px;
 }
 .nav-perfil i{
   display: flex;
@@ -62,6 +55,14 @@ body{
   align-items: center;
   justify-content: space-evenly;
 }
+.pesquisa i{
+  position: absolute;
+  color: #54656f;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 16px;
+  cursor: pointer;
+}
 .caixa-pesquisa{
   width: 380px;
   border: none;
@@ -72,14 +73,6 @@ body{
   font-size: .9rem;
   padding-left: 64px;
   text-overflow: ellipsis;
-}
-.pesquisa i{
-  position: absolute;
-  color: #54656f;
-  font-size: 14px;
-  margin-top: 10px;
-  margin-left: 16px;
-  cursor: pointer;
 }
 .filtro i{
   font-size: 20px;
@@ -121,6 +114,23 @@ body{
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
 }
+.hora {
+  color: #667781;
+  font-size: 14px;
+}
+
+/*Container da Direita*/
+
+.container-direito {
+  grid-area: container-direito;
+  background-color: #efeae2;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.hide{
+  display: none;
+}
 .header-direito{
   display: flex;
   width: 100%;
@@ -153,6 +163,7 @@ body{
   height: calc(100% - 120px);
   flex-direction: column;
   padding: 16px;
+  gap: 16px;
 }
 .caixa-mensagens-minha {
   display: flex;
@@ -183,55 +194,58 @@ body{
   font-size: 0.7rem;
   opacity: 0.5;
 }
-.footer-direito{
-  display: flex;
+
+.chatBox_input{
+  position: relative;
   width: 100%;
-  height: 64px;
+  height: 60px;
+  background-color: #f0f2f5;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  background-color: #F0F2F5;
-  gap: 16px;
-  padding: 16px;
+  gap: 20px;
+  border-left: 1px solid #e9edef;
 }
-.footer-direito i{
-  font-size: 24px;
+.chatBox_input i{
+  cursor: pointer;
+  font-size: 1.2rem;
   color: #54656f;
 }
-.caixa-pesquisa-direita{
-  width: 100%;
+.chatBox_input input{
+  position: relative;
+  width: 90%;
+  padding: 10px 20px;
   border: none;
-  outline: 0;
-  height: 45px;
-  border-radius: 8px;
-  font-size: 1rem;
-  padding-left: 16px;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1em;
 }
-.hide{
-  display: none;
-}
+
+
+
+
 
 /* TABLET */
 @media (max-width:960px){
-  .container{
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-areas: 
-      "container-esquerdo" "container-direito";
-      grid-template-columns: 1fr 1fr;
-  }
-  .container-direito{
-      width: 100vw;
-      height: 100vh;
-  }
-  .container-esquerdo{
-      height: 100vh;
-  }
-  .caixa-pesquisa{
-      width: 80vw;
-  }
+    .container{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-areas: 
+        "container-esquerdo" "container-direito";
+        grid-template-columns: 1fr 1fr;
+    }
+    .container-direito{
+        width: 100vw;
+        height: 100vh;
+    }
+    .container-esquerdo{
+        height: 100vh;
+    }
+    .caixa-pesquisa{
+        width: 80vw;
+    }
 }
 /* MOBILE */
-@media (max-width:640px){
-
-}
+@media (max-width:640px) {}
