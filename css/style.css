@@ -127,6 +127,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column-reverse;
+  /* flex-direction: column; */
+  justify-content: space-between;
+
 }
 .hide{
   display: none;
@@ -196,7 +199,6 @@ body {
 }
 
 .chatBox_input{
-  position: relative;
   width: 100%;
   height: 60px;
   background-color: #f0f2f5;
@@ -206,6 +208,8 @@ body {
   align-items: center;
   gap: 20px;
   border-left: 1px solid #e9edef;
+  order: -1;
+  
 }
 .chatBox_input i{
   cursor: pointer;

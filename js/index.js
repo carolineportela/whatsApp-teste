@@ -1,6 +1,6 @@
 'use strict'
 
-import {contatos} from "./contatos.js"
+import { contatos } from "./contatos.js"
 
 const criarCard = (contato, indice) => {
 
@@ -9,8 +9,9 @@ const criarCard = (contato, indice) => {
 
     conversa.addEventListener('click', (event) => {
         var container = document.getElementById('container-chat')
-        container.appendChild(criarMensagem(indice))
+        container.replaceChildren(criarMensagem(indice))
         container.appendChild(criarHeader(indice))
+        // coontainer.appendChild(carregarMessageBar(indice))
     })
 
     const foto = document.createElement('img')
@@ -58,64 +59,73 @@ const criarHeader = (indice) => {
     infoConversa.classList.add('info-conversa')
     infoConversa.textContent = 'online'
 
-    header.append(containerHeader)
-
-    containerHeader.append(imagemPerfil, containerPerfil)
-
     containerPerfil.append(infoNome, infoConversa)
+    
+    containerHeader.append(imagemPerfil, containerPerfil)
+    
+    header.append(containerHeader)
 
     return header
 
 }
 
-const criarMensagem = (indice) => {
+  const carregarMessageBar = () => {
+    const message__bar = document.getElementById('messageBar')
+    message__bar.classList.remove('chatBox_input')
+    message__bar.classList.add('messageBar')
+   
+    return messageBar
+}
+   const criarMensagem = (indice) => {
 
     const containerMensagensDireita = document.createElement('div')
     containerMensagensDireita.classList.add('container-mensagens-direita');
 
-    const caixaMensagensMinha = document.createElement('div')
-    caixaMensagensMinha.classList.add('caixa-mensagens-minha')
-
-    const caixaMensagensSua = document.createElement('div')
-    caixaMensagensSua.classList.add('caixa-mensagens-sua')
-
-    const msgMinha = document.createElement('p')
-    msgMinha.classList.add('msg-minha')
-
-    const horaMinha = document.createElement('span')
-    horaMinha.classList.add('hora-minha')
-
-    const msgSua = document.createElement('p')
-    msgSua.classList.add('msg-sua')
-
-    const horaSua = document.createElement('span')
-    horaSua.classList.add('hora-sua')
-
     contatos[indice].messages.forEach((mensagem) => {
-        if (mensagem.sender == 'me') {
 
+        const caixaMensagensMinha = document.createElement('div')
+        caixaMensagensMinha.classList.add('caixa-mensagens-minha')
+
+        const caixaMensagensSua = document.createElement('div')
+        caixaMensagensSua.classList.add('caixa-mensagens-sua')
+
+        const msgMinha = document.createElement('p')
+        msgMinha.classList.add('msg-minha')
+
+        const horaMinha = document.createElement('span')
+        horaMinha.classList.add('hora-minha')
+
+        const msgSua = document.createElement('p')
+        msgSua.classList.add('msg-sua')
+
+        const horaSua = document.createElement('span')
+        horaSua.classList.add('hora-sua')
+
+        if (mensagem.sender == 'me') {
+          
             msgMinha.classList.add('msg-minha')
             msgMinha.textContent = mensagem.content
 
             horaMinha.classList.add('hora-minha')
             horaMinha.textContent = mensagem.time
+            caixaMensagensMinha.append(msgMinha, horaMinha)
 
-        } else if (mensagem.sender == contatos[indice].name) {
-
+          
+        } else {
+            
             msgSua.classList.add('msg-sua')
             msgSua.textContent = mensagem.content
 
             horaSua.classList.add('hora-sua')
             horaSua.textContent = mensagem.time
 
+            caixaMensagensSua.append(msgSua, horaSua)
+
+           
+            
         }
+        containerMensagensDireita.append(caixaMensagensMinha, caixaMensagensSua)
     })
-
-    containerMensagensDireita.append(caixaMensagensMinha, caixaMensagensSua)
-
-    caixaMensagensMinha.append(msgMinha, horaMinha)
-
-    caixaMensagensSua.append(msgSua, horaSua)
 
     return containerMensagensDireita
 
